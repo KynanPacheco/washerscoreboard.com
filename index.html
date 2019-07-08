@@ -33,6 +33,7 @@
 	<div class="d-flex justify-content-center">
 	<div class="card col-sm-3 text-center">
 		<h2 id="round">Round 0</h2>
+		<button id="newGame" onClick="newGame">New Game</button>
 		<div class="container">
 			<h1>Team 1</h1>
 			<p id="score1">0 </p><p id="board1">0</p>
@@ -131,9 +132,11 @@
 		var result = test(total, roundWinner);
 		if (result == true){
 			document.getElementById("score" + roundWinner).innerHTML = total;
-			round++;
+			roundCounter++;
 			document.getElementById("round").innerHTML = "Round " + round + ": Team " + roundWinner + " will throw first!";
 		}
+		document.getElementById("board1").innerHTML = 0;
+		document.getElementById("board2").innerHTML = 0;
 		
 	}
 	
