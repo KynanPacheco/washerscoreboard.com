@@ -32,6 +32,7 @@
 
 	<div class="d-flex justify-content-center">
 	<div class="card col-sm-3 text-center">
+		<h2 id="round">Round 0</h2>
 		<div class="container">
 			<h1>Team 1</h1>
 			<p id="score1">0 </p><p id="board1">0</p>
@@ -53,6 +54,8 @@
 
 <script>
 
+	var roundCounter = 0;
+	
 	function addPoint(team){
 		var board = document.getElementById("board" + team).innerHTML;
 		console.log(board);
@@ -82,6 +85,8 @@
 		document.getElementById("score2").innerHTML = 0;
 		document.getElementById("board1").innerHTML = 0;
 		document.getElementById("board2").innerHTML = 0;
+		roundCounter = 0;
+		document.getElementById("round").innerHTML = "Round 0";
 	}
 	
 	function test(testVal, team){
@@ -102,28 +107,34 @@
 		var board1 = document.getElementById("board1").innerHTML;
 		var board2 = document.getElementById("board2").innerHTML;
 		var score1 = document.getElementById("score1").innerHTML;
-		var score2 = document.getElementById("score1").innerHTML;
+		var score2 = document.getElementById("score2").innerHTML;
 		
 		board1 = Number(board1);
 		board2 = Number(board2);
 		score1 = Number(score1);
 		score2 = Number(score2);
 		
-		var total1 = board1 + score1;
-		var total2 = board2 + score2;
-		
-		var resultl = test(total1, 1);
-		console.log(resultl);
-		var result2 = test(total2, 2);
-		console.log(result2);
-		
-		if (resultl == true){
-			document.getElementById("score1").innerHTML = total1;
+		var total = 0;
+		var roundWinner = 0;
+		if (board1 > board2){
+			var total = board1 - board2
+			total = total + score1;
+			roundWinner = 1;
+		} else if (board2 > board1){
+			var total = board2 - board1
+			total = total + score2;
+			roundWinner = 2;
+		} else {
+			var total = 0;
 		}
 		
-		if (result2 == true){
-			document.getElementById("score2").innerHTML = total2;
+		var result = test(total, roundWinner);
+		if (result == true){
+			document.getElementById("score" + roundWinner).innerHTML = total;
+			round++;
+			document.getElementById("round").innerHTML = "Round " + round + ": Team " + roundWinner + " will throw first!";
 		}
+		
 	}
 	
 </script>
