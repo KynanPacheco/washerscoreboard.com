@@ -33,7 +33,7 @@
 	<div class="d-flex justify-content-center">
 	<div class="card col-sm-3 text-center">
 		<h2 id="round">Round 0</h2>
-		<button id="newGame" onClick="newGame">New Game</button>
+		<button id="newGame" onClick="newGame()">New Game</button>
 		<div class="container">
 			<h1>Team 1</h1>
 			<p>Score:</p><p id="score1">0 </p><p>On the Board:</p><p id="board1">0</p>
@@ -125,9 +125,7 @@
 			var total = board2 - board1
 			total = total + score2;
 			roundWinner = 2;
-		} else {
-			var total = 0;
-		}
+		} 
 		
 		var result = test(total, roundWinner);
 		if (result == true){
