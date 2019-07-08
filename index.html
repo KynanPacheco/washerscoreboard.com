@@ -56,6 +56,7 @@
 <script>
 
 	var roundCounter = 0;
+	var roundWinner = 0;
 	
 	function addPoint(team){
 		var board = document.getElementById("board" + team).innerHTML;
@@ -116,7 +117,6 @@
 		score2 = Number(score2);
 		
 		var total = 0;
-		var roundWinner = 0;
 		if (board1 > board2){
 			var total = board1 - board2
 			total = total + score1;
